@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>add rules</title>
+
+    <link href="../static/rules.css" rel="stylesheet">
+    <link href="../static/selectCss.css" rel="stylesheet">
+
+</head>
+
+<body style="overflow: hidden;">
+    <div id="head" class="headline">
+        <div class="head_title">
+            <h3>Prometheus</h3>
+        </div>
+        <div class="head_ul">
+            <ul class="title_head">
+                <li><h4><a href="#" style="text-decoration: none ; color:gray" onmouseover="changeColorOver(this)" onmouseout="changeColorOut(this)">Add</a></h4></li>
+                <li><h4><a href="javascript:showUpdateList()" style="text-decoration: none ; color:gray" onmouseover="changeColorOver(this)" onmouseout="changeColorOut(this)">Update</a></h4></li>
+                <li><h4><a href="#" style="text-decoration: none ; color:gray" onmouseover="changeColorOver(this)" onmouseout="changeColorOut(this)">Delete</a></h4></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="rules_add" style="position: absolute ; top: 70px">
+
+        <div style="font-size:30px; font-weight:bold">添加告警规则</div>
+
+        <div style="height: 30px ; position: absolute; top: 45px">
+            <label class="labelMonitor">创建规则</label>
+            <label class="labelChar">示例</label>
+        </div>
+
+        <div style="height: 30px; width: 100%; position: absolute; top: 105px">
+            <label style="width: 50px; font-size: 15px; background-color: #0a6aa1; color: white">名称:</label>
+            <input type="text" id="rules_name" value="" placeholder="    设置告警规则名称...." class="form-control" style="width: 60%; height: 30px; font-size: 15px; position: absolute; left: 82px">
+        </div>
+
+        <div style="height: 30px; width: 100%; position: absolute; top: 155px">
+            <label style="width: 50px; font-size: 15px; background-color: #0a6aa1; color: white">表达式:</label>
+            <!--style="appearance:none; -moz-appearance:none; -webkit-appearance:none; width: 60%; height: 35px; position: absolute; left: 82px; font-size: 15px; background-color: white; border: 1px solid gainsboro; color: grey "-->
+            <select id="rules_select_item" class="chosen-select" style="width: 60.5%; height: 30px; position: absolute; left: 82px">
+                <option selected style="text-align: center" value="">&nbsp;&nbsp;监控项列表</option>
+                <option style="text-align: center" value="rtpproxy可用个数">rtpproxy可用个数</option>
+                <option style="text-align: center" value="b_test">b_test</option>
+                <option style="text-align: center" value="a_test">a_test</option>
+                <option style="text-align: center" value="calls数">calls数</option>
+            </select>
+        </div>
+        <textarea id="rules_expr" style=" width: 60%; height: 150px; position: absolute; left: 82px;  top: 190px"></textarea>
+
+        <div style="height: 30px; width: 100%; position: absolute; top: 358px">
+            <label style="width: 50px; font-size: 15px; background-color: #0a6aa1; color: white">持续:</label>
+            <input id="rules_time" type="text" placeholder="    设置持续时间...." class="form-control" style=" width: 200px; height: 30px; font-size: 15px; position: absolute; left: 82px">
+        </div>
+
+        <div style="height: 30px; width: 100%; position: absolute; top: 410px">
+            <label style="width: 50px; font-size: 15px; background-color: #0a6aa1; color: white">级别:</label>
+            <!--style="appearance:none; -moz-appearance:none; -webkit-appearance:none; width: 60%; height: 35px; position: absolute; left: 82px; font-size: 15px; background-color: white; border: 1px solid gainsboro; color: grey "-->
+            <select id="rules_select"  class="chosen-select" style="width: 208px; height: 30px; position: absolute; left: 82px;">
+                <option selected style="text-align: center" value=""> &nbsp;&nbsp;选择故障等级</option>
+                <option style="text-align: center" value="information">Information</option>
+                <option style="text-align: center" value="warning">Warning</option>
+                <option style="text-align: center" value="average">Average</option>
+                <option style="text-align: center" value="high">High</option>
+                <option style="text-align: center" value="disaster">Disaster</option>
+            </select>
+        </div>
+
+        <div style="height: 30px; width: 100%; position: absolute; top: 460px">
+            <label style="width: 50px; font-size: 15px; background-color: #0a6aa1; color: white">模板:</label>
+            <input id="rules_model" type="text" disabled="disabled" class="form-control" value='告警主机和端口{{ $labels.instance }} 告警值：{{ $value }}' style="color: grey ; width: 60%; height: 30px; font-size: 15px; position: absolute; left: 82px">
+        </div>
+
+        <div style="height: 30px; width: 100%; position: absolute; top: 510px">
+            <label style="width: 50px; font-size: 15px; background-color: #0a6aa1; color: white">描述:</label>
+            <input id="rules_desc" type="text" placeholder="    设置告警描述...." class="form-control" style="color: grey ; width: 60%; height: 30px; font-size: 15px; position: absolute; left: 82px">
+        </div>
+
+        <div style="height: 30px ; position: absolute; top: 560px; width: 100%;">
+            <label style="width: 60%; height: 26px;background-color: lightcoral; text-align: center"><a href="javascript:submit()" style="text-decoration: none ; color: white" >提交</a></label>
+            <label style="width: 40px; height: 26px; background-color: lightcoral"></label>
+            <!--coral-->
+        </div>
+
+    </div>
+
+    <div style="overflow-y: auto; position: absolute ; top: 80px; left: 50%; width: 1px; height: 90%; border-left:1px dashed lightgrey;"></div>
+
+    <div style="overflow-y: auto; position: absolute ; top: 70px; left: 57%; width: 38.5%; height: 90%; line-height:40px;border:1px solid lightgrey; font-size: 20px">
+        <div style="margin-top: 20px; margin-left: 10px">告警规则预览:</div>
+            <div  style="margin-left: 10px">groups:</div>
+            <div id="name_rules" style="margin-left: 10px">- name:</div>
+            <div style="margin-left: 10px">&nbsp;&nbsp;rules:</div>
+            <div id="alert_rules" style="margin-left: 10px">&nbsp;&nbsp;- alert:</div>
+            <div id="expr_rules" style="margin-left: 10px">&nbsp;&nbsp;&nbsp;&nbsp;expr:</div>
+            <div id="time_rules" style="margin-left: 10px">&nbsp;&nbsp;&nbsp;&nbsp;for:</div>
+            <div style="margin-left: 10px">&nbsp;&nbsp;&nbsp;&nbsp;labels:</div>
+            <div id="select_rules" style="margin-left: 10px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;level:</div>
+            <div style="margin-left: 10px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;service: "local-234"</div>
+            <div style="margin-left: 10px">&nbsp;&nbsp;&nbsp;&nbsp;annotations:</div>
+            <div style="margin-left: 10px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;summary: "告警主机和端口{{ $labels.instance }} 告警值：{{ $value }}"</div>
+            <div id="desc_rules" style="margin-left: 10px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;description:</div>
+    </div>
+
+
+    <div id="rules_list" style="display: none ; padding: 0 0 0 0;z-index: 2 ;width: 345px; height: 32px; position: fixed; right: 3%; top: 10%; border: 4px solid #2a62bc; background-color: black">
+        <label style="width: 100px; font-size: 15px; background-color: #0a6aa1; color: white">选择修改规则:</label>
+        <!--style="appearance:none; -moz-appearance:none; -webkit-appearance:none; width: 60%; height: 35px; position: absolute; left: 82px; font-size: 15px; background-color: white; border: 1px solid gainsboro; color: grey "-->
+        <select id="list_select_rules" class="chosen-select" style="float: left;width: 208px; height: 30px;">
+            <option selected style="text-align: center" value=""> &nbsp;&nbsp;选择修改规则</option>
+            <option selected style="text-align: center" value=""> &nbsp;&nbsp;选择故障等级</option>
+            <option style="text-align: center" value="information">Information</option>
+            <option style="text-align: center" value="warning">Warning</option>
+            <option style="text-align: center" value="average">Average</option>
+            <option style="text-align: center" value="high">High</option>
+            <option style="text-align: center" value="disaster">Disaster</option>
+        </select>
+    </div>
+
+    <div id="back" style="display: none ;z-index: 1; width: 100%; height: 100%; position: fixed; left: 0; top: 65px; background-color: grey;opacity:0.7; "></div>
+
+</body>
+
+    <!-- Mainly scripts -->
+    <script src="../static/js/jquery-2.1.1.js"></script>
+
+    <!-- Chosen -->
+    <script src="../static/js/plugins/chosen/chosen.jquery.js"></script>
+
+    <!-- iCheck -->
+    <script src="../static/js/plugins/iCheck/icheck.min.js"></script>
+
+    <script src="../static/show.js"></script>
+    <script src="../static/update.js"></script>
+
+    <script>
+        function showUpdateList(){
+//rules_list back
+            jQuery.ajax({
+                type: "POST",
+                url: "/prometheus/getRulesList",
+                dataType: 'json',
+                async: false,
+                error: function () {
+                    alert("操作失败,请稍等片刻重新尝试,如仍有问题请联系管理员......");
+                    return false;
+                },
+                success : function(result){
+                    document.getElementById("rules_list").style.display = "block";
+                    document.getElementById("back").style.display = "block";
+                    var html = '<option selected style="text-align: center" value="">&nbsp;&nbsp;选择修改规则</option>';
+                    for(var item in result ){
+                        for(var index in result[item]){
+//                            alert(result[item][index]);
+                            html = html + '<option style="text-align: center" value="information">' + result[item][index].replace('.yaml','') + '</option>';
+
+                        }
+                    }
+                    alert(html);
+                    $("#list_select_rules").html(html);
+
+                    loadJs("../static/js/jquery-2.1.1.js");
+                    loadJs("../static/js/plugins/chosen/chosen.jquery.js");
+                    loadJs("../static/js/plugins/iCheck/icheck.min.js");
+                    loadJs("../static/show.js");
+                }
+            })
+        }
+
+
+
+        function loadJs(file)
+            {
+                var head = $("head").remove("script[role='reload']");
+                $("<scri"+"pt>"+"</scr"+"ipt>").attr({
+                role:'reload',src:file,type:'text/javascript'}).appendTo(head);
+            }
+    </script>
+
+
+</html>

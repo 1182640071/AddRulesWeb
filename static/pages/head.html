@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>add rules</title>
+
+    <link href="../rules.css" rel="stylesheet">
+    <link href="../selectCss.css" rel="stylesheet">
+
+</head>
+<body>
+    <div id="head" class="headline">
+        <div class="head_title">
+            <h3>Prometheus</h3>
+        </div>
+        <div class="head_ul">
+            <ul class="title_head">
+                <li><h4><a href="/prometheus/AddRules" target="view_window" style="text-decoration: none ; color:gray" onmouseover="changeColorOver(this)" onmouseout="changeColorOut(this)">Add</a></h4></li>
+                <li><h4><a href="../pages/update.html" target="view_window" style="text-decoration: none ; color:gray" onmouseover="changeColorOver(this)" onmouseout="changeColorOut(this)">Update</a></h4></li>
+                <li><h4><a href="../pages/delete.html" target="view_window" style="text-decoration: none ; color:gray" onmouseover="changeColorOver(this)" onmouseout="changeColorOut(this)">Delete</a></h4></li>
+            </ul>
+            <ul class="title_refresh" style="float: right">
+                <li><h4><a href="javascript:refreshRule()" style="text-decoration: none ; color:gray" onmouseover="changeColorOver(this)" onmouseout="changeColorOut(this)">Refresh</a></h4></li>
+            </ul>
+        </div>
+    </div>
+    <!--<iframe style="position: absolute; top: 0; left: 0" width="100%"; height="65px" src="../static/pages/head.html" mce_src="../static/pages/head.html"></iframe>-->
+
+</body>
+
+    <!-- Mainly scripts -->
+    <script src="../js/jquery-2.1.1.js"></script>
+
+    <!-- Chosen -->
+    <script src="../js/plugins/chosen/chosen.jquery.js"></script>
+
+    <!-- iCheck -->
+    <script src="../js/plugins/iCheck/icheck.min.js"></script>
+
+    <script src="../show.js"></script>
+    <script src="../update.js"></script>
+</html>

@@ -1,0 +1,99 @@
+.headline {
+        position:absolute;
+        background-color: black;
+        border-color: #080808;
+        width: 100%;
+        height: 65px;
+        top: 0;
+        left: 0;
+    }
+
+    .head_title {
+        position: absolute;
+        width: 80px;
+        left: 10px;
+        top: 4px;
+        height: 65px;
+    }
+
+    .title_refresh {
+        position: absolute;
+        width: 80px;
+        right: 10px;
+        top: 4px;
+        height: 65px;
+    }
+
+    .head_title h3 {
+        color: gray;
+        position: absolute;
+        left: 1%;
+        top: 0;
+    }
+
+
+    /*.head_ul ul {*/
+        /*list-style:none; !* 去掉ul前面的符号 *!*/
+        /*margin: 0; !* 与外界元素的距离为0 *!*/
+        /*padding: 0; !* 与内部元素的距离为0 *!*/
+        /*!*width: auto; !* 宽度根据元素内容调整 *!*!*/
+        /*position: absolute;*/
+        /*left: 151px;*/
+        /*width: 90%;*/
+        /*height: 65px;*/
+    /*}*/
+
+    .title_head {
+        list-style:none;
+        margin: 0;
+        padding: 0;
+        position: absolute;
+        left: 128px;
+        width: 90%;
+        height: 65px;
+        top: 0;
+    }
+
+    .head_ul ul li{
+        float:left;
+        margin: 0;
+        padding: 6px;
+        /*color: white;*/
+    }
+
+    .head_ul ul li h4{
+        font-weight:normal;
+        color: gray;
+    }
+
+    label {
+        padding-top: 6px;
+        padding-right: 12px;
+        padding-bottom: 6px;
+        padding-left: 12px;
+        float: left;
+    }
+
+    .labelMonitor {
+        background-color: #286090;
+        border-color: #2e6da4;
+        color: #fff;
+    }
+
+    .labelChar {
+        background-color: #337ab7;
+        border-color: #2e6da4;
+        color: #fff;
+    }
+
+    .rules_add {
+        position: absolute;
+        top:65px;
+        left: 15px;
+        width: 60%;
+        /*background-color: greenyellow;*/
+    }
+
+    .rules_add div {
+        /*margin: 6px;*/
+    }
